@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+<main>
+   	<div class="row">
+   		<div class="col-md-12">
+            <form action="/catalog/{{category_name}}/{{item_title}}/edit" method="POST">
+               <h1>Item title:</h1><br>
+               <input type="text" name="title" value="{{item_title}}"><br>
+               <h1>Item Description:</h1>
+               <textarea name="description">{{description}}</textarea><br>
+               <h1>Category:</h1>
+               <select name="category_id">
+                  {% for i in categories %}
+                  <option value="{{i.id}}">{{i.name}}</option>
+                  {% endfor %}
+               </select><br><br>
+               <input type="submit" value="Submit">
+            </form>
+   		</div>
+   	</div>
+</main>
+{% endblock %}

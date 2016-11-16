@@ -1,0 +1,11 @@
+<div class="col-md-3 Side-bar">
+	<h3>Categories</h3>
+	<div class="create-category">
+		<a href="/catalog/new">Create a Category</a>
+	</div>
+	{% for category in categories %}
+		<div class="category">
+			<a href="/catalog/{{category.name}}">{{category.name}}</a>
+		</div>
+	{% endfor %}
+</div>

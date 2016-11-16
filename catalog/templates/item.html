@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block content %}
+<main>
+   	<div class="row">
+   		<div class="col-md-12">
+               <h1>{{item.title}}</h1><br>
+               <div class="item-description">
+               {{item.description}}
+               </div>
+               {% if item.user_id == currentUser %}
+               <p>
+               		<div class="edit-delete">
+               		<a href="/catalog/{{category.name}}/{{item.title}}/edit">Edit</a> | <a href="/catalog/{{category.name}}/{{item.title}}/delete">Delete</a>
+               		</div>
+	           </p>
+	           {% endif %}
+   		</div>
+   	</div>
+</main>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% block content %}
+<main>
+   	<div class="row">
+   		{% include "categorysidebar.html" %}
+
+   		<div class="col-md-9">
+   			<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+     			 {% if messages %}
+        			<ul>
+        				{% for message in messages %}
+            				<li> <strong> {{ message }} </strong> </li>
+        				{% endfor %}
+        			</ul>
+        		{% endif %}
+    		{% endwith %}
+			</div>
+   			<h1>Latest Items</h1>
+   			{% for item in items %}
+   			<div class="item">
+   			<a href="/catalog/{{item.category.name}}/{{item.title}}">{{item.title}} ({{item.category.name}})</a>
+   			{% endfor %}
+   		</div>
+   	</div>
+</main>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% block content %}
+<main>
+   	<div class="row">
+   		<div class="col-md-12">
+            <form action="{{url_for('newItem')}}" method="POST">
+            <div class = 'flash'>
+               {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                     <ul>
+                        {% for message in messages %}
+                           <li> <strong> {{ message }} </strong> </li>
+                        {% endfor %}
+                     </ul>
+                  {% endif %}
+               {% endwith %}
+            </div>
+               <h1>Item title:</h1><br>
+               <input type="text" name="title"><br>
+               <h1>Item Description:</h1>
+               <textarea name="description"></textarea><br>
+               <h1>Category:</h1>
+               <select name="category_id">
+                  {% for category in categories %}
+                  <option value="{{category.id}}">{{category.name}}</option>
+                  {% endfor %}
+               </select><br><br>
+               <input type="submit" value="Create">
+            </form>
+   		</div>
+   	</div>
+</main>
+{% endblock %}
